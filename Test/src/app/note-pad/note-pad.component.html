@@ -1,0 +1,59 @@
+<br>
+<br>
+<ul class="nav navbar-nav" role="navigation">
+  <div class="container-fluid">
+  <div class="row ">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-2">
+      <button (click)="retriveData()"><i class="fas fa-edit"></i></button>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-light" (click)="delete_Data()"> <i class="far fa-trash-alt"></i></button>
+    </div>
+    <div class="col-sm-5">
+      <input type="text" [(ngModel)]="userFilter.name" placeholder="search">
+
+    </div>
+  </div>
+  </div>
+</ul>
+
+<br>
+<div class="row">
+
+
+  <div class="col-sm-4">
+
+    <!--
+
+    <td>{{student.date | date :'MMMM d, y'}} at {{student.date | date :'h:mm a'}}</td>
+    -->
+
+<span style = "color:#8866ff;">
+         New Note
+  <br>
+  {{myTextarea}}</span>
+
+    <table class="table">
+      <tr *ngFor="let content of data | filterBy: userFilter.name">
+        <td (click)="displayContainingData(content) ">{{content}}</td>
+
+      </tr>
+    </table>
+
+
+
+
+  </div>
+
+
+  <div class="col-sm-8">
+
+    {{ date | date :'MMMM d, y'}} at {{date | date :'h:mm a'}}
+    <br>
+    <textarea [(ngModel)]="myTextarea"></textarea>
+
+</div>
+</div>
+
