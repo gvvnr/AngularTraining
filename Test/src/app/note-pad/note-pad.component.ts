@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 
+import { LocalStorage } from '@ngx-pwa/local-storage';
 @Component({
   selector: 'app-note-pad',
   templateUrl: './note-pad.component.html',
@@ -14,12 +15,17 @@ export class NotePadComponent implements OnInit {
   data  = new Array('');
   userFilter: any = { name: '' };
 
-  constructor() {
+  constructor(private localstorage :LocalStorage) {
 
   }
 
   ngOnInit() {
    // this.enable=true;
+    this.localstorage.getItem('user').subscribe((data) => {
+
+      this.data=data;
+      console.log(this.data);
+    });
   }
   addValue(){
 
@@ -28,6 +34,8 @@ export class NotePadComponent implements OnInit {
     this.data.push(this.myTextarea);
     this.myTextarea='';
     console.log(this.myTextarea);
+    this.localstorage.setItem('user',this.data).subscribe(() =>{});
+
 
 
 
@@ -37,6 +45,7 @@ export class NotePadComponent implements OnInit {
       if(this.data[index]==this.deleteData){
 
         this.data.splice(index,1);
+        this.localstorage.setItem('user',this.data).subscribe(() =>{});
         this.myTextarea='';
       }
     }

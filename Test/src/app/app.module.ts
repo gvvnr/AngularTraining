@@ -7,7 +7,6 @@ import { DisplayComponent } from './display/display.component';
 import { DataComponent } from './data/data.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPipeModule } from 'ngx-filter-pipe';
-
 const routes: Routes = [
   { path: 'notePad', component: NotePadComponent }
 ];
