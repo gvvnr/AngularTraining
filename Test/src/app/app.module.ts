@@ -7,6 +7,7 @@ import { DisplayComponent } from './display/display.component';
 import { DataComponent } from './data/data.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { CompressDataPipe } from './compress-data.pipe';
 const routes: Routes = [
   { path: 'notePad', component: NotePadComponent }
 ];
@@ -16,6 +17,7 @@ const routes: Routes = [
     NotePadComponent,
     DisplayComponent,
     DataComponent,
+    CompressDataPipe,
   ],
   imports: [
     BrowserModule,

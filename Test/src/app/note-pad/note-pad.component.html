@@ -24,16 +24,13 @@
 
 
   <div class="col-sm-4">
-
-    <!--
-
-    <td>{{student.date | date :'MMMM d, y'}} at {{student.date | date :'h:mm a'}}</td>
-    -->
+<!--
+-->
 
 <span style = "color:#8866ff;">
          New Note
   <br>
-  {{myTextarea}}</span>
+  {{myTextarea | compressData}}</span>
 
     <table class="table">
       <tr *ngFor="let content of data | filterBy: userFilter.name">
@@ -50,7 +47,8 @@
 
   <div class="col-sm-8">
 
-    {{ date | date :'MMMM d, y'}} at {{date | date :'h:mm a'}}
+   <!-- {{ date | date :'MMMM d, y'}} at {{date | date :'h:mm a'}}-->
+    {{today}}
     <br>
     <textarea [(ngModel)]="myTextarea"></textarea>
 

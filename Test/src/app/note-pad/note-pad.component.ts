@@ -10,7 +10,11 @@ import { LocalStorage } from '@ngx-pwa/local-storage';
 export class NotePadComponent implements OnInit {
   myTextarea: any;
   deleteData : any;
+   monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
   date= new Date();
+  today=this.monthNames[new Date().getMonth()]+" "+new Date().getDate()+" ,"+new Date().getFullYear()+" at "+new Date().toLocaleTimeString();
   //userFilter: any = [''];
   data  = new Array('');
   userFilter: any = { name: '' };
@@ -31,7 +35,7 @@ export class NotePadComponent implements OnInit {
 
   }
   retriveData(){
-    this.data.push(this.myTextarea);
+    this.data.push(this.myTextarea+"\n"+this.today);
     this.myTextarea='';
     console.log(this.myTextarea);
     this.localstorage.setItem('user',this.data).subscribe(() =>{});
