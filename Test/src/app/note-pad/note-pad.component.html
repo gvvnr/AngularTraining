@@ -28,28 +28,44 @@
 -->
 
 <span style = "color:#8866ff;">
-         New Note
+  <div *ngIf="NoteButton">
+      <button (click)="disable()">New Note</button>
+
+  </div>
+
   <br>
-  {{myTextarea | compressData}}</span>
+      {{myTextarea | compressData }}
+
+
+<br>
+  <div *ngIf="myTextarea">
+      {{date}} {{text}}
+  </div>
+
+</span>
+
 
     <table class="table">
       <tr *ngFor="let content of data | filterBy: userFilter.name">
-        <td (click)="displayContainingData(content) ">{{content}}</td>
+        <td (click)="displayContainingData(content) ">
 
-      </tr>
+          {{content.split('$')[0]}}
+        <br>
+          {{content.split('$')[1]}}
+        </td>
+     </tr>
     </table>
-
-
-
-
   </div>
 
 
   <div class="col-sm-8">
-
+  <div *ngIf="textArea">
     {{today}}
     <br>
     <textarea [(ngModel)]="myTextarea"></textarea>
+  </div>
+
+
 
 </div>
 </div>

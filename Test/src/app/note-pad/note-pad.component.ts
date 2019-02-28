@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterPipeModule } from 'ngx-filter-pipe';
-
 import { LocalStorage } from '@ngx-pwa/local-storage';
 @Component({
   selector: 'app-note-pad',
@@ -15,33 +13,35 @@ export class NotePadComponent implements OnInit {
   ];
   date= new Date();
   today=this.monthNames[new Date().getMonth()]+" "+new Date().getDate()+" ,"+new Date().getFullYear()+" at "+new Date().toLocaleTimeString();
-  //userFilter: any = [''];
   data  = new Array('');
   userFilter: any = { name: '' };
-
+  text="this is static text";
+  NoteButton=true;
+  textArea=false
+  exist=false;
   constructor(private localstorage :LocalStorage) {
-
-  }
-
-  ngOnInit() {
-   // this.enable=true;
-    this.localstorage.getItem('user').subscribe((data) => {
+    localstorage.getItem('user').subscribe((data) => {
 
       this.data=data;
-      console.log(this.data);
     });
   }
-  addValue(){
+
+
+  ngOnInit() {
+
+  }
+
+  disable(){
+         this.NoteButton=false;
+         this.textArea=true;
+
 
   }
   retriveData(){
-    this.data.push(this.myTextarea+"\n"+this.today);
+    this.data.push(this.myTextarea+'$'+this.today+' '+this.text);
     this.myTextarea='';
-    console.log(this.myTextarea);
+    this.NoteButton=true;
     this.localstorage.setItem('user',this.data).subscribe(() =>{});
-
-
-
 
     }
   delete_Data(){
@@ -53,10 +53,8 @@ export class NotePadComponent implements OnInit {
         this.myTextarea='';
       }
     }
-    //alert(this.deleteData);
   }
   displayContainingData(content : any){
-    //alert(content);
     this.myTextarea=content;
     this.deleteData=content;
 
