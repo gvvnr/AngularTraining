@@ -1,0 +1,36 @@
+<br>
+<br>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <table align="center">
+    <tr>
+
+      <td>userId:</td>
+      <td>     <input class="form-control" formControlName="userId" type="text"></td>
+
+      <div *ngIf="loginForm.controls['userId'].invalid && (loginForm.controls['userId'].dirty || loginForm.controls['userId'].touched)" class="alert alert-danger">
+        <div *ngIf="loginForm.controls['userId'].errors.required">
+          Name is required.
+        </div>
+      </div>
+    </tr>
+    <br>
+
+    <tr>
+
+      <td>Password:</td>
+      <td><input class="form-control" formControlName="Password" type="text"></td>
+
+      <div *ngIf="loginForm.controls['Password'].invalid && (loginForm.controls['Password'].dirty || loginForm.controls['Password'].touched)" class="alert alert-danger">
+        <div *ngIf="loginForm.controls['Password'].errors.required">
+          Password is required.
+        </div>
+      </div>
+    </tr>
+    <br>
+    <tr>
+      <td><button type="button"class="form-control" (click)="signUp()">signUp</button></td>
+      <td><button type="submit" class="form-control" [disabled]="!loginForm.valid">Login</button></td>
+      <td><button type="reset" class="form-control">reset</button></td>
+    </tr>
+  </table>
+</form>

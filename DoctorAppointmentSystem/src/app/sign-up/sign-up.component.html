@@ -1,0 +1,76 @@
+
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <table align="center">
+    <tr>
+      <td>Name</td>
+      <td><input id="name" type="text" formControlName="name" class= "form-control"></td>
+
+      <div *ngIf="signUpForm.controls['name'].invalid && (signUpForm.controls['name'].dirty || signUpForm.controls['name'].touched)" class="alert alert-danger">
+        <div *ngIf="signUpForm.controls['name'].errors.required">
+
+
+          Name is required.
+        </div>
+        <div *ngIf="signUpForm.controls['name'].errors.minlength">
+          Minimum length of 3 letters  is required for name
+        </div>
+      </div>
+    </tr>
+    <tr>
+      <td>EmailId</td>
+      <td><input id="EmailId" type="text" formControlName="EmailId" class= "form-control"></td>
+
+      <div *ngIf="signUpForm.controls['EmailId'].invalid && (signUpForm.controls['EmailId'].dirty || signUpForm.controls['EmailId'].touched)" class="alert alert-danger">
+        <div *ngIf="signUpForm.controls['EmailId'].errors.required">
+                   EmailId is required.
+        </div>
+        <div *ngIf="signUpForm.controls['EmailId'].errors.email">
+          EmailId is Invalid
+        </div>
+      </div>
+    </tr>
+    <tr>
+      <td>Moblile Number</td>
+      <td><input id="mobileNo" type="number" formControlName="mobileNo" class= "form-control"></td>
+
+      <div *ngIf="signUpForm.controls['mobileNo'].invalid && (signUpForm.controls['mobileNo'].dirty || signUpForm.controls['mobileNo'].touched)" class="alert alert-danger">
+        <div *ngIf="signUpForm.controls['mobileNo'].errors.required">
+          MobileNumber is required
+        </div>
+        <div *ngIf="signUpForm.controls['mobileNo'].errors.minlength">
+          Minimum length of 10 letters  is required for mobile numbers
+        </div>
+        <div *ngIf="signUpForm.controls['mobileNo'].errors.maxlength">
+          Maximum length of 10 letters  is required for mobile numbers
+        </div>
+      </div>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input id="password" type="password" formControlName="password" class= "form-control"></td>
+
+      <div *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)" class="alert alert-danger">
+        <div *ngIf="signUpForm.controls['password'].errors.required">
+          password is required
+        </div>
+        <div *ngIf="signUpForm.controls['password'].errors.minlength">
+          Minimum length of 6 Characters  is required for mobile numbers
+        </div>
+      </div>
+    </tr>
+    <tr>
+      <td>Type of signUp</td>
+      <td><input  type="radio" value="patient" formControlName="type">Patient
+        <input type="radio" value="Doctor" formControlName="type">Doctor
+      </td>
+    </tr>
+    <tr>
+      <td><button type="submit" [disabled]="!signUpForm.valid" >submit</button></td>
+      <td><button type="reset">reset</button></td>
+
+
+
+    </tr>
+
+  </table>
+</form>
