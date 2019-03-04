@@ -32,21 +32,31 @@
   </mat-form-field>
 </div>
 <div *ngIf="selected">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="checking()">BookAppointment</button>
-    </mat-card-actions>
-  </mat-card>
+  <div *ngFor= " let doctor  of dataSource">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{doctor.name}}</mat-card-title>
+        <mat-card-subtitle>{{doctor.type}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Located in {{selected}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="checking(doctor)">BookAppointment</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
 </div>
+
+<div *ngIf="valid">
+
+  <app-doctor-details [samp]=id></app-doctor-details>
+
+
+</div>
+
+

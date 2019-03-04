@@ -1,9 +1,10 @@
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 .example-card {
   max-width: 400px;
+  max-height: 400px;
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKDT7r4KDlnk-3-E4MzQ8V2T6ZRSUaAIU8oFABtLQAMzkXhs8IIg');
   background-size: cover;
 }
