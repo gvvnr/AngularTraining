@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DocDetails, HomePageComponent} from '../home-page/home-page.component';
+import {SendDataService} from '../send-data.service';
+import {Subscription} from 'rxjs';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -14,13 +16,21 @@ export interface PeriodicElement {
 })
 export class DoctorDetailsComponent implements OnInit {
   @Input() samp: any;
-
-  constructor(private activatedRoute: ActivatedRoute) { }
+  subscription: Subscription;
+  docDetails: DocDetails[];
+  constructor(private activatedRoute: ActivatedRoute, private dataserviceReciving: SendDataService) { }
 
   ngOnInit() {
+    this.subscription = this.dataserviceReciving.getMessage().subscribe( message => {
+      this.docDetails = message;
+      console.log(this.docDetails);
+    })
 
-    console.log(this.samp);
+    console.log(this.activatedRoute.snapshot.paramMap.get('id'));
   }
+
+
+
 
 }
 

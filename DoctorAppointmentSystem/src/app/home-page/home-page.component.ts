@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {SendDataService} from '../send-data.service';
 export interface DocDetails {
   name: string;
   id: number;
@@ -26,18 +27,19 @@ export class HomePageComponent implements OnInit {
   dataSource = DOCDATA;
   category: any = ['school', 'college'];
   selected: any;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sendDataService: SendDataService) {
+
+  }
 
   ngOnInit() {
+
   }
-  valid: any;
   ChangingValue( val: any) {
     console.log(val);
   }
   checking(doctor: DocDetails) {
     this.id = doctor.name;
-    this.valid = 'zassd';
-    alert('hello');
+    this.sendDataService.storeData(this.dataSource);
     setTimeout(() => {
       this.router.navigate(['/doctorDetails', doctor.id]); }, 1000);
  //  this.router.navigate(['/doctorDetails', doctor.id]);
