@@ -16,7 +16,6 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
 import { MatTableModule } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {HomePageComponent} from './home-page/home-page.component';
-
 const routes: Routes = [
   { path: 'homePage', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
@@ -35,7 +34,7 @@ const routes: Routes = [
     DisplayComponent,
     PageNotfoundComponent,
     AdminLoginComponent,
-    DoctorDetailsComponent,
+    DoctorDetailsComponent
   ],
   imports: [
     BrowserModule,

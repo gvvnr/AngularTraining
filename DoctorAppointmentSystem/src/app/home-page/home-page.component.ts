@@ -21,12 +21,13 @@ const DOCDATA: DocDetails[] = [
 
 
 export class HomePageComponent implements OnInit {
-  public cities: any = ['Hyderabad', 'Guntur' , 'chennai'];
+  public cities: any = ['Hyderabad', 'Guntur', 'chennai'];
   id: any;
   sample: any;
   dataSource = DOCDATA;
   category: any = ['school', 'college'];
   selected: any;
+
   constructor(private router: Router, private sendDataService: SendDataService) {
 
   }
@@ -34,15 +35,20 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
 
   }
-  ChangingValue( val: any) {
+
+  ChangingValue(val: any) {
     console.log(val);
   }
+
   checking(doctor: DocDetails) {
     this.id = doctor.name;
     this.sendDataService.storeData(this.dataSource);
-    setTimeout(() => {
-      this.router.navigate(['/doctorDetails', doctor.id]); }, 1000);
- //  this.router.navigate(['/doctorDetails', doctor.id]);
-  }
 
+    this.router.navigate(['/doctorDetails', doctor.id]);
+
+  }
 }
+/*   setTimeout(() => {
+         this.router.navigate(['/doctorDetails', doctor.id]); }, 1000);
+
+     }*/

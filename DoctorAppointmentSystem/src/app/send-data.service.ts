@@ -11,7 +11,6 @@ export class SendDataService {
   constructor() { }
 
   storeData(details: DocDetails[]) {
-    console.log(details + 'ffsda');
     this.subject.next(details);
 
 
